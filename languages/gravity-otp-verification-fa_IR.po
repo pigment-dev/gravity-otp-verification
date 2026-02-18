@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTP Verification for Gravity Forms\n"
-"POT-Creation-Date: 2025-08-04 20:00+0330\n"
-"PO-Revision-Date: 2025-08-04 20:01+0330\n"
+"POT-Creation-Date: 2025-11-10 00:37+0330\n"
+"PO-Revision-Date: 2025-11-10 00:37+0330\n"
 "Last-Translator: Amirhossein Hosseinpour <its@amirhp.com>\n"
 "Language-Team: Amirhossein Hosseinpour <its@amirhp.com>\n"
 "Language: fa_IR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-KeywordsList: "
@@ -608,108 +608,125 @@ msgid "Add New Entry"
 msgstr "اضافه کردن جدید"
 
 #: gravity-otp-verification.php:1598
+msgctxt "plugin-meta"
+msgid "Documentation"
+msgstr "مستندات"
+
+#: gravity-otp-verification.php:1598
+msgctxt "plugin-meta"
 msgid "Docs"
 msgstr "مستندات"
 
 #: gravity-otp-verification.php:1599
+msgctxt "plugin-meta"
+msgid "Vulnerability Disclosure Program"
+msgstr "Vulnerability Disclosure Program"
+
+#: gravity-otp-verification.php:1599
+msgctxt "plugin-meta"
+msgid "VDP"
+msgstr "VDP"
+
+#: gravity-otp-verification.php:1600
+msgctxt "plugin-meta"
 msgid "Community Support"
 msgstr "پشتیبانی جامعه وردپرس"
 
-#: gravity-otp-verification.php:1619 gravity-otp-verification.php:1621
-#: gravity-otp-verification.php:1651 gravity-otp-verification.php:1654
-#: gravity-otp-verification.php:1656 gravity-otp-verification.php:1669
-#: gravity-otp-verification.php:1671 gravity-otp-verification.php:1693
-#: gravity-otp-verification.php:1695
+#: gravity-otp-verification.php:1620 gravity-otp-verification.php:1622
+#: gravity-otp-verification.php:1652 gravity-otp-verification.php:1655
+#: gravity-otp-verification.php:1657 gravity-otp-verification.php:1670
+#: gravity-otp-verification.php:1672 gravity-otp-verification.php:1694
+#: gravity-otp-verification.php:1696
 msgid "An unknown error occured."
 msgstr "خطای ناشناخته رخ داد."
 
-#: gravity-otp-verification.php:1642
+#: gravity-otp-verification.php:1643
 msgid "Entry updated successfully. Please reload the page to view the changes."
 msgstr "ویرایش با موفقیت انجام شد برای مشاهده صفحه را رفرش کنید."
 
-#: gravity-otp-verification.php:1643
+#: gravity-otp-verification.php:1644
 msgid "An unknown error occurred during editing item."
 msgstr "یک خطای ناشناخته حین ویرایش رخ داد."
 
-#: gravity-otp-verification.php:1646
+#: gravity-otp-verification.php:1647
 msgid "An unknown error occurred."
 msgstr "یک خطای ناشناخته رخ داد."
 
-#: gravity-otp-verification.php:1661
+#: gravity-otp-verification.php:1662
 msgid "Item successfully deleted"
 msgstr "مورد با موفقیت حذف شد"
 
-#: gravity-otp-verification.php:1663
+#: gravity-otp-verification.php:1664
 msgid "Could not remove item from database."
 msgstr "متاسفانه نمیتوان مورد را از پایگاه داده حذف کرد."
 
-#: gravity-otp-verification.php:1679
+#: gravity-otp-verification.php:1680
 msgid "Items removed successfully."
 msgstr "موارد با موفقیت حذف شدند."
 
-#: gravity-otp-verification.php:1681
+#: gravity-otp-verification.php:1682
 msgid "There was a problem with your request."
 msgstr "مشکلی در پردازش درخواست شما پیش آمد."
 
-#: gravity-otp-verification.php:1687
+#: gravity-otp-verification.php:1688
 msgid "Database successfully re-created and got fixed."
 msgstr "پایگاه داده با موفقیت ساخته/تعمیر شد."
 
-#: gravity-otp-verification.php:1700
+#: gravity-otp-verification.php:1701
 msgid "Database cleared successfully."
 msgstr "پایگاه داده با موفقیت پاک شد."
 
-#: gravity-otp-verification.php:1702
+#: gravity-otp-verification.php:1703
 msgid "Error clearing database!"
 msgstr "خطایی در پاکسازی پایگاه داده رخ داد!"
 
-#: gravity-otp-verification.php:1706 gravity-otp-verification.php:1710
+#: gravity-otp-verification.php:1707 gravity-otp-verification.php:1711
 msgid "Incorrect Data Supplied."
 msgstr "داده‌های نادرست وارد شده‌اند."
 
-#: gravity-otp-verification.php:1723
+#: gravity-otp-verification.php:1724
 msgid "Error Occured"
 msgstr "خطا"
 
-#: gravity-otp-verification.php:1727
+#: gravity-otp-verification.php:1728
 msgid "Successful"
 msgstr "موفق"
 
-#: gravity-otp-verification.php:1730 include/backend-page-log.php:147
+#: gravity-otp-verification.php:1731 include/backend-page-log.php:147
 msgid "Unknown"
 msgstr "نامشخص"
 
-#: gravity-otp-verification.php:1733 include/backend-page-log.php:144
+#: gravity-otp-verification.php:1734 include/backend-page-log.php:144
 msgid "Pending"
 msgstr "درانتظاربررسی"
 
-#: gravity-otp-verification.php:1736
+#: gravity-otp-verification.php:1737
 msgid "Sending"
 msgstr "در حال ارسال"
 
-#: gravity-otp-verification.php:1739
+#: gravity-otp-verification.php:1740
 msgid "Banned"
 msgstr "بن شده"
 
-#: gravity-otp-verification.php:1742
+#: gravity-otp-verification.php:1743
 msgid "Reached Limit"
 msgstr "سقف محدودیت"
 
 #. translators: %s: unknown status, leave this as is
-#: gravity-otp-verification.php:1748 gravity-otp-verification.php:1756
+#: gravity-otp-verification.php:1749 gravity-otp-verification.php:1757
 #, php-format
 msgid "Status: %s"
 msgstr "وضعیت: %s"
 
 #. translators: 1: title, 2: version
-#: gravity-otp-verification.php:1774
+#: gravity-otp-verification.php:1775
 #, php-format
 msgctxt "footer-copyright"
 msgid "%1$s — Version %2$s"
 msgstr "‫%1$s — نسخه %2$s"
 
 #. Plugin Name of the plugin/theme
-#: gravity-otp-verification.php:1775
+#: gravity-otp-verification.php:1776
 msgid "Gravity Forms - OTP Verification (SMS/EMAIL)"
 msgstr "گراویتی فرم - کد یکبارمصرف (موبایل/ایمیل)"
 
@@ -1359,8 +1376,8 @@ msgid "Choose %s"
 msgstr "%s را انتخاب کنید"
 
 #. Plugin URI of the plugin/theme
-msgid "https://wordpress.org/plugins/gravity-otp-verification/"
-msgstr "‪https://wordpress.org/plugins/gravity-otp-verification/"
+msgid "https://pigment.dev/gravity-otp-verification/"
+msgstr "https://pigment.dev/gravity-otp-verification/"
 
 #. Description of the plugin/theme
 msgid ""
