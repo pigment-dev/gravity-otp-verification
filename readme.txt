@@ -1,6 +1,6 @@
 === Gravity Forms - OTP Verification (SMS/EMAIL) ===
-Version: 3.1.0
-Stable tag: 3.1.0
+Version: 3.2.0
+Stable tag: 3.2.0
 Author: pigmentdev
 Donate link: https://pigment.dev/contact/
 Author URI: https://pigment.dev/

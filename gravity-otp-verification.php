@@ -6,7 +6,7 @@
  * Author URI: https://pigment.dev/
  * Plugin URI: https://pigment.dev/gravity-otp-verification/
  * Contributors: amirhpcom, pigmentdev
- * Version: 3.1.2
+ * Version: 3.2.0
  * Tested up to: 6.8
  * Requires PHP: 7.1
  * Text Domain: gravity-otp-verification
@@ -15,7 +15,7 @@
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * @Last modified by: amirhp-com <its@amirhp.com>
- * @Last modified time: 2026/03/12 13:13:23
+ * @Last modified time: 2026/03/12 13:29:19
 */
 namespace PigmentDev\GravityOTPVerification;
 defined("ABSPATH") or die("<h2>Unauthorized Access!</h2><hr><small>Gravity Forms - OTP Verification (SMS/EMAIL) :: Developed by <a href='https://pigment.dev/'>Pigment.Dev</a></small>");
@@ -23,7 +23,7 @@ if (!class_exists("gravity_otp")) {
   class gravity_otp {
     public $td = "gravity-otp-verification";
     public $db_slug = "gravity_otp_verification";
-    public $version = "3.1.2";
+    public $version = "3.2.0";
     public $script_version;
     public $db_version = "3.0.0";
     public $title = "Gravity Forms - OTP Verification";
