@@ -1,7 +1,7 @@
 <?php
 /*
  * @Last modified by: amirhp-com <its@amirhp.com>
- * @Last modified time: 2025/08/04 19:15:34
+ * @Last modified time: 2026/03/12 11:08:25
  */
 
 namespace PigmentDev\GravityOTPVerification;
@@ -40,7 +40,7 @@ class setting_page extends gravity_otp {
         echo '<div id="message" class="updated notice is-dismissible"><p>' . esc_attr_x("Settings saved successfully.", "setting-general", "gravity-otp-verification") . "</p></div>";
       }
       $gateways = apply_filters("gravity-otp-verification/sms-gateways-list", [
-        "wp_sms"    => esc_attr__("Plugin: WP-SMS (Over 300 gateways)", "gravity-otp-verification"),
+        "wp_sms"    => esc_attr__("Plugin: WSMS (formerly WP SMS) (Over 300 gateways)", "gravity-otp-verification"),
         "woo_sms"   => esc_attr__("Plugin: Persian WooCommerce SMS (Iranian)", "gravity-otp-verification"),
         "sms_ir"    => esc_attr__("SMS.ir (Iranian)", "gravity-otp-verification"),
         "sms_ir_v2" => esc_attr__("SMS.ir v2 (Iranian)", "gravity-otp-verification"),
@@ -217,8 +217,11 @@ class setting_page extends gravity_otp {
                   </div>
                   <div class="hide help-wp_sms">
                     <ul class="pretty">
-                      <li><?php echo wp_kses_post(__('Install WP-SMS and Config it, this plugin would use it as SMS Gateway', "gravity-otp-verification")); ?></li>
-                      <li><a target="_blank" href="<?= admin_url("plugin-install.php?s=WP-SMS%2520VeronaLabs&tab=search&type=term"); ?>" class="exteranl"><?php esc_attr_e("Install WP-SMS", "gravity-otp-verification");?></a></li>
+                      <li><?php echo wp_kses_post(__('Install WSMS (formerly WP SMS) and Config it, this plugin would use it as SMS Gateway', "gravity-otp-verification")); ?></li>
+                      <li><a target="_blank" href="<?= admin_url("plugin-install.php?s=WP-SMS%2520VeronaLabs&tab=search&type=term"); ?>" class="exteranl"><?php esc_attr_e("Install WSMS (formerly WP SMS)", "gravity-otp-verification");?></a></li>
+                      <li><?php echo
+                          // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+                          wp_kses_post(__('Write your Message on OTP SMS field using <code>[otp]</code> or <code>{otp}</code> or <code>%otp%</code> to replace with Actual OTP Code.', "gravity-otp-verification")); ?></li>
                     </ul>
                   </div>
                   <?php do_action("gravity-otp-verification/sms-gateways-help"); ?>

@@ -6,7 +6,7 @@
  * Author URI: https://pigment.dev/
  * Plugin URI: https://pigment.dev/gravity-otp-verification/
  * Contributors: amirhpcom, pigmentdev
- * Version: 3.0.1
+ * Version: 3.1.0
  * Tested up to: 6.8
  * Requires PHP: 7.1
  * Text Domain: gravity-otp-verification
@@ -15,7 +15,7 @@
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * @Last modified by: amirhp-com <its@amirhp.com>
- * @Last modified time: 2025/09/03 19:50:59
+ * @Last modified time: 2026/03/12 11:05:30
 */
 namespace PigmentDev\GravityOTPVerification;
 defined("ABSPATH") or die("<h2>Unauthorized Access!</h2><hr><small>Gravity Forms - OTP Verification (SMS/EMAIL) :: Developed by <a href='https://pigment.dev/'>Pigment.Dev</a></small>");
@@ -23,7 +23,7 @@ if (!class_exists("gravity_otp")) {
   class gravity_otp {
     public $td = "gravity-otp-verification";
     public $db_slug = "gravity_otp_verification";
-    public $version = "3.0.1";
+    public $version = "3.1.0";
     public $script_version;
     public $db_version = "3.0.0";
     public $title = "Gravity Forms - OTP Verification";
@@ -213,15 +213,21 @@ if (!class_exists("gravity_otp")) {
           $res = $this->send_faraz_sms($mobile, $otp, $echo);
           if (is_wp_error($res)) $this->last_ajax_err = $res->get_error_messages();
           break;
-        case 'woo_sms':
+        case 'wp_sms':
           $res = null; $message = str_replace(["[otp]", "{otp}", "%otp%", "[OTP]", "{OTP}", "%OTP%",], [$otp, $otp, $otp, $otp, $otp, $otp], trim($this->read("api_otp_sms")));
           if (function_exists("wp_sms_send")) {
-            // https://wp-sms-pro.com/resources/wp_sms_send/
+            // https://wsms.io/docs/wp-sms-send/
             $res = wp_sms_send((array) $mobile, $message);
           }
-          if (is_wp_error($res) || !$res) $this->last_ajax_err = method_exists($res, "get_error_messages") ? $res->get_error_messages() : var_export($res, 1);
+          if (is_wp_error($res)) {
+            $this->last_ajax_err = $res->get_error_messages();
+          } elseif (!$res) {
+            $this->last_ajax_err = 'Request failed (empty response)';
+          } else {
+            $this->last_ajax_err = null; // Success, no error
+          }
         break;
-        case 'wp_sms':
+        case 'woo_sms':
           $res = null; $message = str_replace(["[otp]", "{otp}", "%otp%", "[OTP]", "{OTP}", "%OTP%",], [$otp, $otp, $otp, $otp, $otp, $otp], trim($this->read("api_otp_sms")));
           if (function_exists("PWSMS")) {
             $res = PWSMS()->send_sms(array("post_id" => 0, "message" => $message, "mobile" => $mobile));
@@ -229,7 +235,13 @@ if (!class_exists("gravity_otp")) {
           elseif (function_exists("PWooSMS")) {
             $res = PWooSMS()->SendSMS(array("post_id" => 0, "message" => $message, "mobile" => $mobile));
           }
-          if (is_wp_error($res) || !$res) $this->last_ajax_err = method_exists($res, "get_error_messages") ? $res->get_error_messages() : var_export($res, 1);
+          if (is_wp_error($res)) {
+            $this->last_ajax_err = $res->get_error_messages();
+          } elseif (!$res) {
+            $this->last_ajax_err = 'Request failed (empty response)';
+          } else {
+            $this->last_ajax_err = null; // Success, no error
+          }
         break;
 
         default:
@@ -266,6 +278,7 @@ if (!class_exists("gravity_otp")) {
       return apply_filters("gravity-otp-verification/fn-send-email", $res, $mail_receiver, $subject, $mail_body, $otp);
     }
     public function debug_trace($mix=""){
+      do_action('qm/debug', $mix);
       if ($this->debug){
         echo wp_kses_data("<pre style='text-align: left; direction: ltr; border:1px solid gray; padding: 1rem; overflow: auto;'>{$mix}</pre>");
       }
@@ -709,7 +722,7 @@ if (!class_exists("gravity_otp")) {
         echo "<pre style='text-align: left; direction: ltr; border:1px solid gray; padding: 1rem; overflow: auto;'>" . var_export([
           "otp"     => $otp,
           "mobile"  => $mobile,
-          "sms_res" => json_decode($res) ? json_decode($res, 1) : $res,
+          "sms_res" => $res && !is_wp_error($res) ? json_decode($res, 1) : $res,
         ], 1) . "</pre>";
         exit;
       }
@@ -725,7 +738,7 @@ if (!class_exists("gravity_otp")) {
         echo "<pre style='text-align: left; direction: ltr; border:1px solid gray; padding: 1rem; overflow: auto;'>" . var_export([
           "otp"     => $otp,
           "email"  => $email,
-          "mail_res" => json_decode($res) ? json_decode($res, 1) : $res,
+          "mail_res" => $res && !is_wp_error($res) ? json_decode($res, 1) : $res,
         ], 1) . "</pre>";
         exit;
       }

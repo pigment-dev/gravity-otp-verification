@@ -1,13 +1,13 @@
 === Gravity Forms - OTP Verification (SMS/EMAIL) ===
-Version: 3.0.1
-Stable tag: 3.0.1
+Version: 3.1.0
+Stable tag: 3.1.0
 Author: pigmentdev
 Donate link: https://pigment.dev/contact/
 Author URI: https://pigment.dev/
 Plugin URI: https://wordpress.org/plugins/gravity-otp-verification/
 Contributors: amirhpcom, pigmentdev
 Tags: gravity-forms, sms authentication, phone verification
-Tested up to: 6.8
+Tested up to: 6.9
 WC requires at least: 5.0
 WC tested up to: 10.0
 Text Domain: gravity-otp-verification
@@ -40,7 +40,7 @@ A powerful plugin for Gravity Forms that adds OTP verification via SMS/Email to 
 == Supported SMS Gateways ==
 The plugin supports direct integration with popular SMS gateways as well as widely-used SMS plugins. You can send OTP messages using your preferred SMS provider or through supported SMS plugins for maximum flexibility.
 
-- **Plugin: WP-SMS (over 300 gateways)**
+- **Plugin: WSMS (formerly WP SMS) (over 300 gateways)**
 - **Plugin: Persian WooCommerce SMS (over 100 gateways)**
 - **Iranian Gateway: SMS.ir (v1/v2)**
 - **Iranian Gateway: FarazSMS**
@@ -126,6 +126,11 @@ For support, contact us at **[support (at) pigment (dot) dev](mailto:support@pig
 == Upgrade Notice ==
 Upgrade to enjoy the latest features and security improvements.
 
+= v3.1.0 | 2026-03-12 | 1404-12-21 =
+- Fixed WP-SMS gateway integration for better compatibility with the latest version of the plugin.
+- Fixed Critical error regarding WooCommerce SMS gateway integration.
+- Enhanced Error handling with use of Query Monitor plugin.
+
 = v3.0.1 | 2025-09-03 | 1404-06-12 =
 - Updated Readme to added patchstack vdp link for reporting security bugs.
 
@@ -141,13 +146,7 @@ Upgrade to enjoy the latest features and security improvements.
 
 For the full changelog, please view the [Github Repository](https://github.com/pigment-dev/gravity-otp-verification?tab=readme-ov-file#changelog)
 
-= v3.0.1 | 2025-09-03 | 1404-06-12 =
-- Updated Readme to added patchstack vdp link for reporting security bugs.
-
-= v3.0.0 | 2025-08-04 | 1404-05-13 =
-- Added **WP-SMS** plugin as an OTP SMS gateway option.
-- Added **Email OTP verification** alongside Mobile OTP verification.
-- Added option to customize the email sender name and address for OTP emails.
-- Introduced an email template (HTML) editor with a default template for OTP messages.
-- Added **Persian translation** to WordPress plugin repository.
-- Upgraded offloaded **Font Awesome** to version 7.
+= v3.1.0 | 2026-03-12 | 1404-12-21 =
+- Fixed WP-SMS gateway integration for better compatibility with the latest version of the plugin.
+- Fixed Critical error regarding WooCommerce SMS gateway integration.
+- Enhanced Error handling with use of Query Monitor plugin.
