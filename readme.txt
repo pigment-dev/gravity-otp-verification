@@ -126,9 +126,11 @@ For support, contact us at **[support (at) pigment (dot) dev](mailto:support@pig
 == Upgrade Notice ==
 Upgrade to enjoy the latest features and security improvements.
 
-= v3.1.0 | 2026-03-12 | 1404-12-21 =
+= v3.2.0 | 2026-03-12 | 1404-12-21 =
 - Fixed WP-SMS gateway integration for better compatibility with the latest version of the plugin.
 - Fixed Critical error regarding WooCommerce SMS gateway integration.
+- Fixed Unexpected Error on Sending Ajax form (if Debug enabled)
+- Fixed Not Verifying OTPs correctly in some cases due to type mismatch
 - Enhanced Error handling with use of Query Monitor plugin.
 
 = v3.0.1 | 2025-09-03 | 1404-06-12 =
@@ -146,7 +148,9 @@ Upgrade to enjoy the latest features and security improvements.
 
 For the full changelog, please view the [Github Repository](https://github.com/pigment-dev/gravity-otp-verification?tab=readme-ov-file#changelog)
 
-= v3.1.0 | 2026-03-12 | 1404-12-21 =
+= v3.2.0 | 2026-03-12 | 1404-12-21 =
 - Fixed WP-SMS gateway integration for better compatibility with the latest version of the plugin.
 - Fixed Critical error regarding WooCommerce SMS gateway integration.
+- Fixed Unexpected Error on Sending Ajax form (if Debug enabled)
+- Fixed Not Verifying OTPs correctly in some cases due to type mismatch
 - Enhanced Error handling with use of Query Monitor plugin.

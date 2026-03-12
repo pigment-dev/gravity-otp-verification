@@ -36,9 +36,11 @@ For support, contact us at **[support (@) pigment (.) dev](mailto:support@pigmen
 This plugin is licensed under **GPLv2 or later**. See [LICENSE](https://www.gnu.org/licenses/gpl-2.0.html) for details.
 ## Changelog
 
-#### v3.1.0 | 2026-03-12 | 1404-12-21
+#### v3.2.0 | 2026-03-12 | 1404-12-21
 - Fixed WP-SMS gateway integration for better compatibility with the latest version of the plugin.
 - Fixed Critical error regarding WooCommerce SMS gateway integration.
+- Fixed Unexpected Error on Sending Ajax form (if Debug enabled)
+- Fixed Not Verifying OTPs correctly in some cases due to type mismatch
 - Enhanced Error handling with use of Query Monitor plugin.
 
 #### v3.0.1 | 2025-09-03 | 1404-06-12

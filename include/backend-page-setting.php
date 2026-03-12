@@ -1,7 +1,7 @@
 <?php
 /*
  * @Last modified by: amirhp-com <its@amirhp.com>
- * @Last modified time: 2026/03/12 11:08:25
+ * @Last modified time: 2026/03/12 13:21:01
  */
 
 namespace PigmentDev\GravityOTPVerification;
@@ -209,7 +209,7 @@ class setting_page extends gravity_otp {
                   <div class="hide help-woo_sms">
                     <ul class="pretty">
                       <li><?php echo wp_kses_post(__('Install Persian WooCommerce SMS and Config it, this plugin would use it as SMS Gateway', "gravity-otp-verification")); ?></li>
-                      <li><a target="_blank" href="<?= admin_url("plugin-install.php?s=Persian%2520WooCommerce%2520SMS%2520PersianScript&tab=search&type=term"); ?>" class="exteranl"><?php esc_html_e("Persian WooCommerce SMS", "gravity-otp-verification");?></a></li>
+                      <li><a target="_blank" href="<?= admin_url("plugin-install.php?s=Persian%2520WooCommerce%2520SMS%2520PersianScript&tab=search&type=term"); ?>" class="exteranl"><?php esc_html_e("Persian WooCommerce SMS", "gravity-otp-verification"); ?></a></li>
                       <li><?php echo
                           // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
                           wp_kses_post(__('If you want to use <strong>Pattern SMS</strong> method , Create a template on your panel and put <code>%otp%</code> on it, then use following example: ', "gravity-otp-verification") . "<pre class='w-100'>pcode:6dvqf351dl06p34" . PHP_EOL . "otp:{otp}</pre>"); ?></li>
@@ -218,7 +218,7 @@ class setting_page extends gravity_otp {
                   <div class="hide help-wp_sms">
                     <ul class="pretty">
                       <li><?php echo wp_kses_post(__('Install WSMS (formerly WP SMS) and Config it, this plugin would use it as SMS Gateway', "gravity-otp-verification")); ?></li>
-                      <li><a target="_blank" href="<?= admin_url("plugin-install.php?s=WP-SMS%2520VeronaLabs&tab=search&type=term"); ?>" class="exteranl"><?php esc_attr_e("Install WSMS (formerly WP SMS)", "gravity-otp-verification");?></a></li>
+                      <li><a target="_blank" href="<?= admin_url("plugin-install.php?s=WP-SMS%2520VeronaLabs&tab=search&type=term"); ?>" class="exteranl"><?php esc_attr_e("Install WSMS (formerly WP SMS)", "gravity-otp-verification"); ?></a></li>
                       <li><?php echo
                           // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
                           wp_kses_post(__('Write your Message on OTP SMS field using <code>[otp]</code> or <code>{otp}</code> or <code>%otp%</code> to replace with Actual OTP Code.', "gravity-otp-verification")); ?></li>
@@ -241,7 +241,17 @@ class setting_page extends gravity_otp {
               <tr>
                 <th><?php echo  esc_attr__("Send TEST SMS", "gravity-otp-verification"); ?></th>
                 <td>
-                  <a target="_blank" href="<?php echo  esc_attr(wp_nonce_url(admin_url("?gravity_otp_verification_send_test=0912456...."),"gravity-otp-verification", "nonce")); ?>" class="button button-secondary"><?php echo  esc_attr__("Send Test OTP SMS", "gravity-otp-verification"); ?></a>
+                  <?php $base_url = wp_nonce_url(admin_url(), "gravity-otp-verification", "nonce"); ?>
+                  <a href="#" onclick="sendTestSMS()" class="button button-secondary"><?php echo esc_attr__("Send Test OTP SMS", "gravity-otp-verification"); ?></a>
+                  <script>
+                    function sendTestSMS() {
+                      var number = prompt('<?php echo esc_js(__("Enter mobile number", "gravity-otp-verification")); ?>');
+                      if (number) {
+                        var url = '<?php echo esc_js($base_url); ?>&gravity_otp_verification_send_test=' + encodeURIComponent(number);
+                        window.open(url, '_blank');
+                      }
+                    }
+                  </script>
                 </td>
               </tr>
             </tbody>
@@ -287,16 +297,35 @@ class setting_page extends gravity_otp {
                   $max = (int) str_pad('9', 4, '9', STR_PAD_RIGHT); // e.g., 99999 for 5 digits
                   $otp = random_int($min, $max);
                   $email = "test@email.com";
-                  echo str_replace([ "{site_url}", "{subject}", "{date}", "{date_time}", "{recipient}", "{otp}", ],
-                   [ home_url(), $this->read("email_subject"), date_i18n("Y/m/d", current_time("timestamp")), date_i18n("Y/m/d H:i:s", current_time("timestamp")), $email, $otp,
-                  ], $this->read("email_template", $this->get_email_template()));
+                  echo str_replace(
+                    ["{site_url}", "{subject}", "{date}", "{date_time}", "{recipient}", "{otp}",],
+                    [
+                      home_url(),
+                      $this->read("email_subject"),
+                      date_i18n("Y/m/d", current_time("timestamp")),
+                      date_i18n("Y/m/d H:i:s", current_time("timestamp")),
+                      $email,
+                      $otp,
+                    ],
+                    $this->read("email_template", $this->get_email_template())
+                  );
                   ?>
                 </td>
               </tr>
               <tr>
                 <th><?php echo  esc_attr__("Send TEST Email", "gravity-otp-verification"); ?></th>
                 <td>
-                  <a target="_blank" href="<?php echo  esc_attr(wp_nonce_url(admin_url("?gravity_otp_verification_send_test_email=" . get_bloginfo("admin_email") ),"gravity-otp-verification", "nonce")); ?>" class="button button-secondary"><?php echo  esc_attr__("Send Test OTP Email", "gravity-otp-verification"); ?></a>
+                  <?php $base_url = esc_attr(wp_nonce_url(admin_url(), "gravity-otp-verification", "nonce")); ?>
+                  <a href="#" onclick="sendTestEmail()" class="button button-secondary"><?php echo esc_attr__("Send Test OTP Email", "gravity-otp-verification"); ?></a>
+                  <script>
+                    function sendTestEmail() {
+                      var email = prompt('<?php echo esc_js(__("Enter email address", "gravity-otp-verification")); ?>');
+                      if (email) {
+                        var url = '<?php echo esc_js($base_url); ?>&gravity_otp_verification_send_test_email=' + encodeURIComponent(email);
+                        window.open(url, '_blank');
+                      }
+                    }
+                  </script>
                   <a href="#" class="button button-secondary reset-default"><?php echo esc_attr__("Rest Template to Default", "gravity-otp-verification"); ?></a>
                 </td>
               </tr>
@@ -306,7 +335,7 @@ class setting_page extends gravity_otp {
             jQuery.noConflict();
             (function($) {
               $(function() {
-                $(document).on("click tap", ".reset-default", function(e){
+                $(document).on("click tap", ".reset-default", function(e) {
                   e.preventDefault();
                   if (confirm("<?php echo esc_js(__('Are you sure you want to reset the email template to default?', 'gravity-otp-verification')); ?>")) {
                     $("#email_template").val(`<?php echo $this->get_email_template(); ?>`).trigger("change");
